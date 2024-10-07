@@ -88,7 +88,10 @@ def gallery():
 
     # Get a list of all uploaded cow images in the IMAGE_FOLDER
     images = os.listdir(IMAGE_FOLDER)
-    images = [url_for('static', filename=f'cow_pics/{image}') for image in images]
+    def is_image_file(s):
+        exts = [".png", ".jpg", ".webp", ".gif", ".jpeg", ".tiff", ".bmp"]
+        return any(s.endswith(e) for e in exts)
+    images = [url_for('static', filename=f'cow_pics/{image}') for image in filter(is_image_file, images]
 
     return render_template('gallery.html', images=images)
 
