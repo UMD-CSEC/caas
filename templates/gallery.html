@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cow Picture Gallery</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Cow Picture Gallery</h1>
+        <form method="POST" action="/gallery" enctype="multipart/form-data">
+            <input type="file" name="cow_image" accept="image/*">
+            <button type="submit">Upload Picture</button>
+        </form>
+        <div class="gallery">
+            {% for image in images %}
+                <div class="gallery-item">
+                    <img src="{{ image }}" alt="Cow Picture">
+                </div>
+            {% endfor %}
+        </div>
+        <a href="/" class="back-link">Go back</a>
+    </div>
+</body>
+</html>
+
