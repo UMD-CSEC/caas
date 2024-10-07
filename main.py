@@ -91,7 +91,7 @@ def gallery():
     def is_image_file(s):
         exts = [".png", ".jpg", ".webp", ".gif", ".jpeg", ".tiff", ".bmp"]
         return any(s.endswith(e) for e in exts)
-    images = [url_for('static', filename=f'cow_pics/{image}') for image in filter(is_image_file, images]
+    images = [url_for('static', filename=f'cow_pics/{image}') for image in filter(is_image_file, images)]
 
     return render_template('gallery.html', images=images)
 
